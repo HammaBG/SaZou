@@ -21,7 +21,7 @@ const Cart = () => {
   const checkoutHandler = () => {
     navigate("/login?redirect=/shipping");
   };
-
+  console.log(cart);
   return (
     <>
       <div className="container flex justify-around items-start flex wrap mx-auto mt-8">

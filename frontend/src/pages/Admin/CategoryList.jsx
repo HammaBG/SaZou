@@ -8,9 +8,10 @@ import {
 import { toast } from "react-toastify";
 import CategoryForm from "../../components/CategoryForm";
 import Modal from "../../components/Modal";
+import AdminMenu from "./AdminMenu";
 
 const CategoryList = () => {
-  const { data: categories } = useFetchCategoriesQuery();
+  const { data: categories , refetch} = useFetchCategoriesQuery();
   const [name, setName] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [updatingName, setUpdatingName] = useState("");
@@ -34,6 +35,7 @@ const CategoryList = () => {
       } else {
         setName("");
         toast.success(`${result.name} is created.`);
+        refetch();
       }
     } catch (error) {
       console.error(error);
@@ -65,6 +67,7 @@ const CategoryList = () => {
         setSelectedCategory(null);
         setUpdatingName("");
         setModalVisible(false);
+        refetch();
       }
     } catch (error) {
       console.error(error);
@@ -81,6 +84,7 @@ const CategoryList = () => {
         toast.success(`${result.name} is deleted.`);
         setSelectedCategory(null);
         setModalVisible(false);
+        refetch();
       }
     } catch (error) {
       console.error(error);
@@ -91,6 +95,7 @@ const CategoryList = () => {
   return (
     <div className="ml-[10rem] flex flex-col md:flex-row">
       <div className="md:w-3/4 p-3">
+      <AdminMenu />
         <div className="h-12">Manage Categories</div>
         <CategoryForm
           value={name}

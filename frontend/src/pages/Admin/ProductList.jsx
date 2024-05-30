@@ -28,9 +28,9 @@ const ProductList = () => {
     const [uploadProductImage] = useUploadProductImageMutation();
     const [createProduct] = useCreateProductMutation();
     const { data: categories } = useFetchCategoriesQuery();
-    const { data: subcategories } = useGetSubCategoriesQuery();
+    // const { data: subcategories } = useGetSubCategoriesQuery();
 
-    console.log(subcategories)
+    // console.log(subcategories)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,8 +44,8 @@ const ProductList = () => {
             productData.append("category", category);
             productData.append("quantity", quantity);
             productData.append("countInStock", stock);
-            // productData.append("For", gender); 
-            productData.append("subCategory", subcategory); // Add the 'For' field to the FormData
+            productData.append("For", gender); 
+            productData.append("subCategory", subcategory);
 
             const { data } = await createProduct(productData);
 
@@ -175,7 +175,7 @@ const ProductList = () => {
                                     ))}
                                 </select>
                             </div>
-                            {
+                            {/* {
                                 category != ""  && (
                                     <div>
                                     <label htmlFor="category">Sub Category</label> <br />
@@ -195,7 +195,7 @@ const ProductList = () => {
                                 </div>
                                 )
                             }
-                       
+                        */}
                         </div>
 
                         <div>
@@ -207,8 +207,8 @@ const ProductList = () => {
                                 onChange={(e) => setGender(e.target.value)}
                             >
                                 <option value="">For</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                                <option value="men">Men's</option>
+                                <option value="women">Women's</option>
                                 <option value="couples">Couples</option>
                                 <option value="Astrological Sign">Astrological Sign</option>
                             </select>

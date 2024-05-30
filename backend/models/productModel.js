@@ -27,7 +27,7 @@ const productSchema = mongoose.Schema(
     numReviews: { type: Number, required: true, default: 0 },
     price: { type: Number, required: true, default: 0 },
     countInStock: { type: Number, required: true, default: 0 },
-    For: { type: String, enum: ['male', 'female', 'couples' ,'Astrological Sign'], required: true },
+    For: { type: String, enum: ['men', 'women', 'couples' ,'Astrological Sign'], required: true },
 
   },
   { timestamps: true }

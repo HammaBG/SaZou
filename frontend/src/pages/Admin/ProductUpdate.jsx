@@ -12,7 +12,7 @@ import AdminMenu from "./AdminMenu";
 
 const ProductUpdate = () => {
   const params = useParams();
-  const { data: productData } = useGetProductByIdQuery(params._id);
+  const { data: productData ,refetch } = useGetProductByIdQuery(params._id);
 
   const [image, setImage] = useState(productData?.image || "");
   const [name, setName] = useState(productData?.name || "");
@@ -73,6 +73,7 @@ const ProductUpdate = () => {
       } else {
         toast.success(`Product successfully updated`);
         navigate("/admin/allproductslist");
+        refetch();
       }
     } catch (err) {
       console.log(err);
@@ -90,6 +91,8 @@ const ProductUpdate = () => {
       const { data } = await deleteProduct(params._id);
       toast.success(`"${data.name}" is deleted`);
       navigate("/admin/allproductslist");
+      refetch();
+
     } catch (err) {
       console.log(err);
       toast.error("Delete failed. Try again.");
