@@ -67,6 +67,7 @@ const Login = () => {
                             disabled={isLoading}
                             type="submit"
                             className="bg-pink-500 text-white px-4 py-2 rounded-full w-full transition duration-300 hover:bg-pink-600"
+                            id="submit"
                         >
                             {isLoading ? <Loader /> : "Sign In"}
                         </button>

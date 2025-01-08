@@ -27,7 +27,7 @@ const ProductCard = ({ p }) => {
             style={{ height: "170px", objectFit: "cover" }}
           />
         </Link>
-        <HeartIcon product={p} />
+        <HeartIcon id="heartIc" product={p} />
       </section>
 
       <div className="p-5">
